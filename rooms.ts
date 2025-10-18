@@ -3,11 +3,11 @@ import * as admin from "firebase-admin";
 
 // Firebase Admin SDK 초기화
 if (!admin.apps.length) {
+  const serviceAccount = JSON.parse(process.env.FIREBASE_CONFIG!);
+
   admin.initializeApp({
-    credential: admin.credential.cert(
-      require("../whiteboard-374db-firebase-adminsdk-fbsvc-33d66f4d2c.json")
-    ),
-    storageBucket: "whiteboard-374db.firebasestorage.app",
+    credential: admin.credential.cert(serviceAccount),
+    storageBucket: "whiteboard-374db.appspot.com",
   });
 }
 
