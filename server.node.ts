@@ -8,9 +8,9 @@ import { makeOrLoadRoom } from "./rooms";
 import { loadAsset, storeAsset } from "./assets";
 import { unfurl } from "./unfurl";
 
-const SERVER_PORT = process.env.SERVER_PORT || 6080;
-const LIVEKIT_API_KEY = "APIbAed6giLBUBq";
-const LIVEKIT_API_SECRET = "3nN6iymQLj9GJD8L8EH2gp0UsMhvX3Fh47lRa03t23Dg";
+const PORT = process.env.PORT || 6080;
+const LIVEKIT_API_KEY = process.env.LIVEKIT_API_KEY ?? "";
+const LIVEKIT_API_SECRET = process.env.LIVEKIT_API_SECRET ?? "";
 
 const app = fastify();
 
@@ -93,10 +93,10 @@ app.register(async (app) => {
   });
 });
 
-app.listen({ port: Number(SERVER_PORT) }, (err) => {
+app.listen({ port: Number(PORT), host: "0.0.0.0" }, (err) => {
   if (err) {
     console.error(err);
     process.exit(1);
   }
-  console.log(`Unified server started on port ${SERVER_PORT}`);
+  console.log(`✅ Unified server started on port ${PORT}`);
 });
