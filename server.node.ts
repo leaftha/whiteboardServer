@@ -15,7 +15,7 @@ const LIVEKIT_API_SECRET = process.env.LIVEKIT_API_SECRET ?? "";
 const app = fastify();
 
 app.register(cors, {
-  origin: "http://localhost:3000",
+  origin: "https://whiteboard-sepia-five.vercel.app/",
   methods: ["GET", "PUT", "DELETE", "OPTIONS"],
   allowedHeaders: ["Content-Type"],
 });
