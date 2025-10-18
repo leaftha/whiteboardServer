@@ -1,13 +1,16 @@
 import { RoomSnapshot, TLSocketRoom } from "@tldraw/sync-core";
-import * as admin from "firebase-admin";
+import admin from "firebase-admin";
+import dotenv from "dotenv";
+
+dotenv.config();
+
+const serviceAccount = JSON.parse(process.env.FIREBASE_CONFIG!);
 
 // Firebase Admin SDK 초기화
 if (!admin.apps.length) {
-  const serviceAccount = JSON.parse(process.env.FIREBASE_CONFIG!);
-
   admin.initializeApp({
     credential: admin.credential.cert(serviceAccount),
-    storageBucket: "whiteboard-374db.appspot.com",
+    storageBucket: "whiteboard-374db.firebasestorage.app",
   });
 }
 
